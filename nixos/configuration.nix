@@ -91,9 +91,9 @@
       tree
     ];
     # Created using mkpasswd
-    hashedPassword = "$6$MwUBl.4.n5ZL6oiu$SN5P1yRrWFl8hmiJoWAxJeqOYocMsg4dXoQxMss8tN83a9XWaDaRJVYczPVW5fU95KTD/ax6ct/FwpGdGcCe.1";
+    hashedPassword = "$6$z22xOEt4OCphYrKY$nwwZvf5zEZECYD1v7ZtXAs0jQ34IY5ji3V63lqhLIkB1MqLxhptQ9PbP98axuYsgf2x37AY53kRTLFF34.62u1";
     openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCcEQ1/aLmAempMGoyRRnhem4snYEcQBDnNr7vBiT4Xf2EdxoIG5X/xnLWp8wnEVBua2f3JXz0BQZodBAUARU+88CJOcaaFqAg8L1QsCxqEkmy0h+ZGPv+wAgbGuooBLlJsOa+zlL7IxGDXRXgS9jrbcucKHN+lq4+hNltTUMSNZGTaGZo/QNq5Gf3ll+T8z66mfXKruF3CFBnZkqaIBeKEa1qu4UrArrVRoj4fC2rSuOjTWoo+Z8WDTaGlnTC+Ug4+X4K6H32MmMcE8C9WcXWDKbw+xRpy757YEa80T7tz9MFacauIfytFcw1YHbiL0gfUNgv/zGU4nn/Qg1IiYjStT5fwLXkLX+nLR3nbVqZ6mPi8cUJhFWs202CGyS7WUvA/SBuXCdhevTy1YWNwbqSJ9q8HNvwM/hASldYxE6pJStLmzwv1wOvDQOKj8NnXnEO9sh7DRYKVGzHa7yLwDH4RR+1gpaWZ3GyxbGdBPOUJqK6BkWfzHCqiPDevsaRg3s3uCN8JkqI7yPixWB0tL19z75wKfqpVUDVt8AOwkbkxNBJe5unN8Cyjx5+PVIs8KJp88QyWWfJkpH6iwPyrEBcKdCrBB5Y0mhWukrh3XYk9YRE/T8c5x5xsGm38meGRObg2R2KD3jNgf4TtFlRPlis0/9f9XKVfX0S+laAVxEKlTQ== jackyhsu@Jackys-Mac-mini.local"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVxgOWNu39zQHEvzg+l48kCePYAeuVRIY4Dm5MNy6H4"
     ];
   };
 
