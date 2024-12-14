@@ -62,6 +62,7 @@ homelab use nixos
 7. 编辑配置文件
   nano /mnt/etc/nixos/configuration.nix
     新增：
+   
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
       users.users.jacky = {
         isNormalUser = true;
@@ -70,6 +71,7 @@ homelab use nixos
       services.openssh.enable = true;
 
   nano flake.nix
+     
      {
       description = "basic jacky's flake";
 
