@@ -3,7 +3,7 @@ homelab use nixos
 
 ## 备注 删除已知的ssh host
 ```bash
-ssh-keygen -R
+ssh-keygen -R 10.0.0.5
 ```
 ## 1. 获取root权限
 ```bash
