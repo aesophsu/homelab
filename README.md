@@ -26,16 +26,16 @@ fdisk /dev/sda
 * 目的： 对指定磁盘（/dev/sda）进行分区。
 
 * 详细操作：
-* g: 使用交互式模式。
-* n: 创建新的分区。
-* t: 设置分区类型。
-* 1: FAT32（boot分区）。
-* 19: LVM（swap分区）。
-* 20: Linux Ext4（根分区）。
+ * g: 使用交互式模式。
+ * n: 创建新的分区。
+ * t: 设置分区类型。
+  * 1: FAT32（boot分区）。
+  * 19: LVM（swap分区）。
+  * 20: Linux Ext4（根分区）。
 * 分区示例：
-* 创建boot分区：512MB，FAT32格式。
-* 创建swap分区：4096MB，swap格式。
-* 创建根分区：剩余空间，Ext4格式。
+ * 创建boot分区：512MB，FAT32格式。
+ * 创建swap分区：4096MB，swap格式。
+ * 创建根分区：剩余空间，Ext4格式。
 
 ## 4. 格式化分区
 ```bash
@@ -95,41 +95,6 @@ nano /mnt/etc/nixos/configuration.nix
   };
   services.openssh.enable = true;
 ```
-```bash
-nano flake.nix
-```
-```nix 
- {
-description = "basic jacky's flake";
-
-inputs = { 
-nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-};
-
-outputs = inputs @ {
-self,
-nixpkgs,
-...
-}: {
-nixosConfigurations = {
-nixos-homelab = let
-username = "jacky";
-specialArgs = { inherit username;};
-in
-nixpkgs.lib.nixosSystem {
-inherit specialArgs;
-system = "x86_64-linux";
-
-modules = [
-./configuration.nix
-];
-};
-
-};
-};
-}
-```
-
 
 * 目的： 使用nano编辑器编辑配置文件，配置系统。
 
