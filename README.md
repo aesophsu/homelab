@@ -111,6 +111,13 @@ homelab use nixos
   passwd jacky
   ssh jacky@10.0.0.5
   * 目的： 根据配置文件安装系统。
+    
 9.更改权限
   sudo chmod -R 700 /boot
+  
+10.移动hardware配置文件
+  mkdir hosts/nixos-homelab
+  mkdir modules
+  mkdir users/jacky
+  cp hardware-configuration.nix hosts/nixos-homelab/
 
