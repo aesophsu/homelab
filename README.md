@@ -131,9 +131,6 @@ cp hardware-configuration.nix hosts/nixos-homelab/
 ```bash
 nixos-rebuild switch --flake .#nixos-homelab
 ```
-```bash
-ssh jacky@10.0.0.5
-```
 * 目的： 根据配置文件安装系统。
 
 ## 9.更改权限
