@@ -2,10 +2,11 @@
 homelab use nixos
 
 1. 获取root权限
+```bash
   passwd nixos
   ssh nixos@10.0.0.5
   sudo -s
-
+```
   * 目的： 以root用户身份执行后续命令，拥有最高权限。
     
 2. 查看磁盘信息
