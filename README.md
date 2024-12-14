@@ -67,6 +67,9 @@ homelab use nixos
       users.users.jacky = {
         isNormalUser = true;
         extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+        packages = with pkgs; [
+          git
+        ];
       };
       services.openssh.enable = true;
 
