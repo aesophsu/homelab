@@ -29,11 +29,11 @@ fdisk /dev/sda
   - g: 创建gpt分区。
   - n: 创建新的分区。
   - t: 设置分区类型。
-    + 1: FAT32（boot分区）。
+    + 1: FAT32（EFI分区）。
     + 19: LVM（swap分区）。
     + 20: Linux Ext4（根分区）。
 * 分区示例：
-   - 创建boot分区：512MB，FAT32格式。
+   - 创建EFI分区：512MB，FAT32格式。
    - 创建swap分区：4096MB，swap格式。
    - 创建根分区：剩余空间，Ext4格式。
 
