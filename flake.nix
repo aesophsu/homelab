@@ -1,26 +1,41 @@
 {
-  description = "NixOS flake";
+  description = "basic jacky's flake";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
-      input.nixpkgs.follows = "nixpkgs";
-    };
+  # the nixConfig here only affects the flake itself, not the system configuration!
+  nixConfig = {
+    # substituers will be appended to the default substituters when fetching packages
+    # nix com    extra-substituters = [munity's cache server
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
 
-  outputs = input@{ self, nixpkgs, home-manager, ...}: {
+  inputs = { 
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+  };
+
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    ...
+  }: {
     nixosConfigurations = {
-      homelab = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.user.jacky = import ./home.nix;
-      ];
+      nixos-homelab = let
+        username = "jacky";
+        specialArgs = { inherit username;};
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          system = "x86_64-linux";
+
+          modules = [  
+            ./configuration.nix
+          ];
+        };
+
     };
   };
 }
