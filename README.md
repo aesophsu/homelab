@@ -94,6 +94,11 @@ nano /mnt/etc/nixos/configuration.nix
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
   };
   services.openssh.enable = true;
+  environment.systemPackages = with pkgs; [
+  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #   wget
+    git
+  ];
 ```
 
 * 目的： 使用nano编辑器编辑配置文件，配置系统。
@@ -106,10 +111,25 @@ nixos-install
 reboot
 ```
 ```bash
-nixos-rebuild switch --flake .#nixos-homelab
+passwd jacky
 ```
 ```bash
-passwd jacky
+cd /tmp
+```
+```bash
+git clone https://github.com/aesophsu/homelab.git
+```
+```bash
+cp -rf /tmp/homelab/* /etc/nixos/
+```
+```bash
+cd /etc/nixos
+```
+```bash
+cp hardware-configuration.nix hosts/nixos-homelab/
+```
+```bash
+nixos-rebuild switch --flake .#nixos-homelab
 ```
 ```bash
 ssh jacky@10.0.0.5
@@ -120,21 +140,6 @@ ssh jacky@10.0.0.5
 ```bash
 sudo chmod -R 700 /boot
 ```
-## 10.移动hardware配置文件
-```bash
-mkdir hosts/nixos-homelab
-```
-```bash
-mkdir modules
-```
-```bash
-mkdir users/jacky
-```
-```bash
-cp hardware-configuration.nix hosts/nixos-homelab/
-```
-## 11.安装git
-
 
 
 
