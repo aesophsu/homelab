@@ -123,3 +123,14 @@ homelab use nixos
   mkdir users/jacky
   cp hardware-configuration.nix hosts/nixos-homelab/
 
+11.安装git
+    users.users.jacky = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      git
+    ];
+  };
+
+
+
