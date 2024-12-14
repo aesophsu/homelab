@@ -88,12 +88,12 @@ nano /mnt/etc/nixos/configuration.nix
 新增：
  
 ```nix
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
-users.users.jacky = {
-isNormalUser = true;
-extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-};
-services.openssh.enable = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  users.users.jacky = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+  };
+  services.openssh.enable = true;
 ```
 ```bash
 nano flake.nix
