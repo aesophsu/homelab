@@ -5,8 +5,10 @@ homelab use nixos
 ```bash
   passwd nixos
 ```
-```
+```bash
   ssh nixos@10.0.0.5
+```
+```bash
   sudo -s
 ```
   * 目的： 以root用户身份执行后续命令，拥有最高权限。
