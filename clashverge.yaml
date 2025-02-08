@@ -1,0 +1,1359 @@
+mode: rule
+mixed-port: 7897
+allow-lan: true
+log-level: info
+ipv6: true
+external-controller: 127.0.0.1:9097
+secret: ''
+unified-delay: true
+dns:
+  enable: true
+  listen: :1053
+  ipv6: true
+  prefer-h3: true
+  use-hosts: true
+  use-system-hosts: true
+  respect-rules: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+  - '*'
+  - +.lan
+  - +.local
+  - +.market.xiaomi.com
+  nameserver:
+  - tls://8.8.8.8
+  - tls://1.1.1.1
+  - tls://9.9.9.9
+  proxy-server-nameserver:
+  - tls://8.8.8.8
+  - tls://1.1.1.1
+  - tls://9.9.9.9
+  nameserver-policy:
+    geosite:private: system
+    geosite:cn,steam@cn,category-games@cn,microsoft@cn,apple@cn:
+    - 119.29.29.29
+    - 223.5.5.5
+keep-alive-interval: 1800
+geodata-mode: true
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: false
+  sniff:
+    TLS:
+      ports:
+      - 443
+      - 8443
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+    QUIC:
+      ports:
+      - 443
+      - 8443
+  force-domain: []
+  skip-domain:
+  - Mijia Cloud
+  - +.oray.com
+bind-address: '*'
+geo-auto-update: true
+external-controller-cors:
+  allow-private-network: true
+  allow-origins:
+  - '*'
+global-client-fingerprint: chrome
+geo-update-interval: 24
+find-process-mode: strict
+geodata-loader: standard
+skip-auth-prefixes:
+- 127.0.0.1/8
+- ::1/128
+profile:
+  store-selected: true
+  store-fake-ip: true
+tun:
+  enable: true
+  stack: gvisor
+  dns-hijack:
+  - any:53
+  strict-route: false
+  auto-route: true
+  auto-detect-interface: true
+  device: Mihomo
+  mtu: 1500
+tcp-concurrent: true
+ntp:
+  enable: true
+  write-to-system: false
+  server: cn.ntp.org.cn
+geox-url:
+  geoip: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat
+  geosite: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
+  mmdb: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb
+  asn: https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb
+proxies:
+- name: 剩余流量：49.4 GB
+  type: trojan
+  server: hk01t.goodyun.buzz
+  port: 22331
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk01t.goodyun.buzz
+- name: 距离下次重置剩余：14 天
+  type: trojan
+  server: hk01t.goodyun.buzz
+  port: 22331
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk01t.goodyun.buzz
+- name: 套餐到期：2025-05-22
+  type: trojan
+  server: hk01t.goodyun.buzz
+  port: 22331
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk01t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong01-GPT优化
+  type: trojan
+  server: hk01t.goodyun.buzz
+  port: 22331
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk01t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong02-GPT优化
+  type: trojan
+  server: hk02t.goodyun.buzz
+  port: 22332
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk02t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong03-GPT优化
+  type: trojan
+  server: hk03t.goodyun.buzz
+  port: 22333
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk03t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong04-GPT优化
+  type: trojan
+  server: hk04t.goodyun.buzz
+  port: 22334
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk04t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong05-GPT优化
+  type: trojan
+  server: hk05t.goodyun.buzz
+  port: 22335
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk05t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong06-GPT优化
+  type: trojan
+  server: hk06t.goodyun.buzz
+  port: 22336
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk06t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong07-GPT优化
+  type: trojan
+  server: hk07t.goodyun.buzz
+  port: 22337
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk07t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong08-GPT优化
+  type: trojan
+  server: hk08t.goodyun.buzz
+  port: 22338
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk08t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong09-GPT优化
+  type: trojan
+  server: hk09t.goodyun.buzz
+  port: 22339
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk09t.goodyun.buzz
+- name: 🇭🇰[HK]HongKong10-GPT优化
+  type: trojan
+  server: hk10t.goodyun.buzz
+  port: 22340
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hk10t.goodyun.buzz
+- name: 🇨🇳[CN]HK专线01-【5倍率】测试
+  type: trojan
+  server: hkiepl01.goodyun.buzz
+  port: 22350
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hkiepl01.goodyun.buzz
+- name: 🇨🇳[CN]HK专线02-【5倍率】测试
+  type: trojan
+  server: hkiepl02.goodyun.buzz
+  port: 22351
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: hkiepl02.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo01
+  type: trojan
+  server: jp01t.goodyun.buzz
+  port: 35001
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp01t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo02
+  type: trojan
+  server: jp02t.goodyun.buzz
+  port: 35002
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp02t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo03
+  type: trojan
+  server: jp03t.goodyun.buzz
+  port: 35003
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp03t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo04
+  type: trojan
+  server: jp04t.goodyun.buzz
+  port: 35004
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp04t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo06
+  type: trojan
+  server: jp06t.goodyun.buzz
+  port: 35006
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp06t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo07
+  type: trojan
+  server: jp07t.goodyun.buzz
+  port: 35007
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp07t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo08
+  type: trojan
+  server: jp08t.goodyun.buzz
+  port: 38088
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp08t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo09
+  type: trojan
+  server: jp09t.goodyun.buzz
+  port: 35009
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp09t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo10
+  type: trojan
+  server: jp10t.goodyun.buzz
+  port: 35010
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp10t.goodyun.buzz
+- name: 🇯🇵[JP]Tokyo11
+  type: trojan
+  server: jp11t.goodyun.buzz
+  port: 35011
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: jp11t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore01
+  type: trojan
+  server: sg01t.goodyun.buzz
+  port: 26201
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg01t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore02
+  type: trojan
+  server: sg02t.goodyun.buzz
+  port: 26202
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg02t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore03
+  type: trojan
+  server: sg03t.goodyun.buzz
+  port: 26203
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg03t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore04
+  type: trojan
+  server: sg04t.goodyun.buzz
+  port: 26211
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg04t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore05
+  type: trojan
+  server: sg05t.goodyun.buzz
+  port: 26205
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg05t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore06
+  type: trojan
+  server: sg06t.goodyun.buzz
+  port: 26216
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg06t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore07
+  type: trojan
+  server: sg07t.goodyun.buzz
+  port: 26207
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg07t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore08
+  type: trojan
+  server: sg08t.goodyun.buzz
+  port: 26208
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg08t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore09
+  type: trojan
+  server: sg09t.goodyun.buzz
+  port: 26209
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg09t.goodyun.buzz
+- name: 🇸🇬[SG]Singapore10
+  type: trojan
+  server: sg10t.goodyun.buzz
+  port: 26210
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: sg10t.goodyun.buzz
+- name: 🇺🇸[US]美国Los Angeles01-GPT优化
+  type: trojan
+  server: us01t.goodyun.buzz
+  port: 33801
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us01t.goodyun.buzz
+- name: 🇺🇸[US]美国Los Angeles02-GPT优化
+  type: trojan
+  server: us02t.goodyun.buzz
+  port: 33802
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us02t.goodyun.buzz
+- name: 🇺🇸[US]美国Los Angeles03-GPT优化
+  type: trojan
+  server: us03t.goodyun.buzz
+  port: 33803
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us03t.goodyun.buzz
+- name: 🇺🇸[US]美国Los Angeles04-GPT优化
+  type: trojan
+  server: us04t.goodyun.buzz
+  port: 33805
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us04t.goodyun.buzz
+- name: 🇺🇸[US]美国Santa Clara05-GPT优化
+  type: trojan
+  server: us05t.goodyun.buzz
+  port: 33806
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us05t.goodyun.buzz
+- name: 🇺🇸[US]美国Santa Clara06-GPT优化
+  type: trojan
+  server: us06t.goodyun.buzz
+  port: 33807
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us06t.goodyun.buzz
+- name: 🇺🇸[US]美国San Jose07-GPT优化
+  type: trojan
+  server: us07t.goodyun.buzz
+  port: 33808
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us07t.goodyun.buzz
+- name: 🇺🇸[US]美国San Jose08-GPT优化
+  type: trojan
+  server: us08t.goodyun.buzz
+  port: 33809
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: us08t.goodyun.buzz
+- name: 🇹🇼[TW]TaiPei01-GPT优化
+  type: trojan
+  server: tw01t.goodyun.buzz
+  port: 33901
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: tw01t.goodyun.buzz
+- name: 🇹🇼[TW]TaiPei02-GPT优化
+  type: trojan
+  server: tw02t.goodyun.buzz
+  port: 33902
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: tw02t.goodyun.buzz
+- name: 🇹🇼[TW]TaiPei03-GPT优化
+  type: trojan
+  server: tw03t.goodyun.buzz
+  port: 33903
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: tw03t.goodyun.buzz
+- name: 🇹🇼[TW]TaiPei04-GPT优化
+  type: trojan
+  server: tw04t.goodyun.buzz
+  port: 33904
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: tw04t.goodyun.buzz
+- name: 🇹🇼[TW]TaiPei05-GPT优化
+  type: trojan
+  server: tw05t.goodyun.buzz
+  port: 33905
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: tw05t.goodyun.buzz
+- name: 🇹🇼[TW]TaiPei06-GPT优化
+  type: trojan
+  server: tw06t.goodyun.buzz
+  port: 33906
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: tw06t.goodyun.buzz
+- name: 🇫🇷[FR]法国-Paris01
+  type: trojan
+  server: fr01t.goodyun.buzz
+  port: 11001
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: fr01t.goodyun.buzz
+- name: 🇫🇷[FR]法国-Paris02
+  type: trojan
+  server: fr02t.goodyun.buzz
+  port: 11002
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: fr02t.goodyun.buzz
+- name: 🇬🇧[UK]英国Coventry01-BBC优化
+  type: trojan
+  server: uk01t.goodyun.buzz
+  port: 11003
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: uk01t.goodyun.buzz
+- name: 🇬🇧[UK]英国Coventry02-BBC优化
+  type: trojan
+  server: uk02t.goodyun.buzz
+  port: 11005
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: uk02t.goodyun.buzz
+- name: 🇩🇪[DE]德国-Frankfurt01
+  type: trojan
+  server: de01t.goodyun.buzz
+  port: 11006
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: de01t.goodyun.buzz
+- name: 🇩🇪[DE]德国-Frankfurt02
+  type: trojan
+  server: de02t.goodyun.buzz
+  port: 11007
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: de02t.goodyun.buzz
+- name: 🇨🇦[CA]加拿大-Toronto
+  type: trojan
+  server: ca01t.goodyun.buzz
+  port: 11008
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: ca01t.goodyun.buzz
+- name: 🇳🇱[NL]荷兰-Amsterdam
+  type: trojan
+  server: nl01t.goodyun.buzz
+  port: 11009
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: nl01t.goodyun.buzz
+- name: 🇷🇺[RU]俄罗斯-Moscow
+  type: trojan
+  server: ru01t.goodyun.buzz
+  port: 11010
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: ru01t.goodyun.buzz
+- name: 🇹🇷[TR]土耳其-Istanbul
+  type: trojan
+  server: tr01t.goodyun.buzz
+  port: 11011
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: tr01t.goodyun.buzz
+- name: 🇮🇳[IN]印度-bangalore
+  type: trojan
+  server: in01t.goodyun.buzz
+  port: 11012
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: in01t.goodyun.buzz
+- name: 🇰🇷[KR]韩国-Seoul
+  type: trojan
+  server: kr01t.goodyun.buzz
+  port: 11013
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: kr01t.goodyun.buzz
+- name: 🇻🇳[VN]越南-HoChiMinh
+  type: trojan
+  server: vn01t.goodyun.buzz
+  port: 11015
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: vn01t.goodyun.buzz
+- name: 🇦🇺[AU]澳大利亚-Sydney
+  type: trojan
+  server: au01t.goodyun.buzz
+  port: 11016
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: au01t.goodyun.buzz
+- name: 🇳🇬[NG]尼日利亚-Lagos
+  type: trojan
+  server: ng01t.goodyun.buzz
+  port: 11017
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: ng01t.goodyun.buzz
+- name: 🇦🇷[AR]阿根廷-BuenosAires
+  type: trojan
+  server: ar01t.goodyun.buzz
+  port: 11018
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: ar01t.goodyun.buzz
+- name: 🇲🇰[MK]马其顿-Macedonia
+  type: trojan
+  server: mk01t.goodyun.buzz
+  port: 11019
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+  sni: mk01t.goodyun.buzz
+- name: '[境外用户专用]GPT01'
+  type: ss
+  server: hkhw01.goodyun.buzz
+  port: 19723
+  cipher: aes-256-gcm
+  password: a4faf3cc-d69c-4dd4-9d01-9b3c6e913a1a
+  udp: true
+- name: Bypass
+  type: direct
+  udp: true
+proxy-groups:
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Default
+  type: select
+  proxies:
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Proxy.png
+- interval: 300
+  timeout: 3000
+  url: https://chat.openai.com/cdn-cgi/trace
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Overseas AI
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png
+- interval: 300
+  timeout: 3000
+  url: https://www.youtube.com/s/desktop/494dd881/img/favicon.ico
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: YouTube
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/YouTube.png
+- interval: 300
+  timeout: 3000
+  url: https://www.bilibili.tv/
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Bilibili SEA
+  type: select
+  proxies:
+  - Default
+  - Bypass
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/bilibili_3.png
+- interval: 300
+  timeout: 3000
+  url: https://ani.gamer.com.tw/ajax/getdeviceid.php
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Bahamut
+  type: select
+  proxies:
+  - Default
+  - Bypass
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Bahamut.png
+- interval: 300
+  timeout: 3000
+  url: https://disney.api.edge.bamgrid.com/devices
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Disney+
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Disney+.png
+- interval: 300
+  timeout: 3000
+  url: https://api.fast.com/netflix/speedtest/v2?https=true
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: NETFLIX
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Netflix.png
+- interval: 300
+  timeout: 3000
+  url: https://www.tiktok.com/
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Tiktok
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png
+- interval: 300
+  timeout: 3000
+  url: http://spclient.wg.spotify.com/signup/public/v1/account
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Spotify
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Spotify.png
+- interval: 300
+  timeout: 3000
+  url: https://www.hbo.com/favicon.ico
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: HBO
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/HBO.png
+- interval: 300
+  timeout: 3000
+  url: https://www.tvb.com/logo_b.svg
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: TVB
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TVB.png
+- interval: 300
+  timeout: 3000
+  url: https://m.media-amazon.com/images/G/01/digital/video/web/logo-min-remaster.png
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Prime Video
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Prime_Video.png
+- interval: 300
+  timeout: 3000
+  url: https://auth.hulu.com/v4/web/password/authenticate
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Hulu
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hulu.png
+- interval: 300
+  timeout: 3000
+  url: http://www.telegram.org/img/website_icon.svg
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Telegram
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram.png
+- interval: 300
+  timeout: 3000
+  url: https://web.whatsapp.com/data/manifest.json
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: WhatsApp
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://static.whatsapp.net/rsrc.php/v3/yP/r/rYZqPCBaG70.png
+- interval: 300
+  timeout: 3000
+  url: https://line.me/page-data/app-data.json
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Line
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Line.png
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Gaming
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Game.png
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Tracking
+  type: select
+  proxies:
+  - REJECT
+  - Bypass
+  - Default
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Reject.png
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Ad-Block
+  type: select
+  proxies:
+  - REJECT
+  - Bypass
+  - Default
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Advertising.png
+- interval: 300
+  timeout: 3000
+  url: http://www.apple.com/library/test/success.html
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Apple
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Apple_2.png
+- interval: 300
+  timeout: 3000
+  url: http://www.google.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Google
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Google_Search.png
+- interval: 300
+  timeout: 3000
+  url: http://www.msftconnecttest.com/connecttest.txt
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Microsoft
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Microsoft.png
+- interval: 300
+  timeout: 3000
+  url: https://r.r10s.jp/com/img/home/logo/touch.png
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Japan
+  type: select
+  proxies:
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  - Bypass
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/JP.png
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Download
+  type: select
+  proxies:
+  - Bypass
+  - REJECT
+  - Default
+  - China
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Download.png
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Others (Global)
+  type: select
+  proxies:
+  - Default
+  - China
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Streaming!CN.png
+- interval: 300
+  timeout: 3000
+  url: http://wifi.vivo.com.cn/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: China
+  type: select
+  proxies:
+  - Bypass
+  - Default
+  - HK
+  - US
+  - JP
+  - KR
+  - SG
+  - TW
+  - GB
+  - DE
+  - TK
+  - Others
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/StreamingCN.png
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: HK
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png
+  proxies:
+  - 🇭🇰[HK]HongKong01-GPT优化
+  - 🇭🇰[HK]HongKong02-GPT优化
+  - 🇭🇰[HK]HongKong03-GPT优化
+  - 🇭🇰[HK]HongKong04-GPT优化
+  - 🇭🇰[HK]HongKong05-GPT优化
+  - 🇭🇰[HK]HongKong06-GPT优化
+  - 🇭🇰[HK]HongKong07-GPT优化
+  - 🇭🇰[HK]HongKong08-GPT优化
+  - 🇭🇰[HK]HongKong09-GPT优化
+  - 🇭🇰[HK]HongKong10-GPT优化
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: US
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png
+  proxies:
+  - 🇺🇸[US]美国Los Angeles01-GPT优化
+  - 🇺🇸[US]美国Los Angeles02-GPT优化
+  - 🇺🇸[US]美国Los Angeles03-GPT优化
+  - 🇺🇸[US]美国Los Angeles04-GPT优化
+  - 🇺🇸[US]美国Santa Clara05-GPT优化
+  - 🇺🇸[US]美国Santa Clara06-GPT优化
+  - 🇺🇸[US]美国San Jose07-GPT优化
+  - 🇺🇸[US]美国San Jose08-GPT优化
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: JP
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png
+  proxies:
+  - 🇯🇵[JP]Tokyo01
+  - 🇯🇵[JP]Tokyo02
+  - 🇯🇵[JP]Tokyo03
+  - 🇯🇵[JP]Tokyo04
+  - 🇯🇵[JP]Tokyo06
+  - 🇯🇵[JP]Tokyo07
+  - 🇯🇵[JP]Tokyo08
+  - 🇯🇵[JP]Tokyo09
+  - 🇯🇵[JP]Tokyo10
+  - 🇯🇵[JP]Tokyo11
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: KR
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Korea.png
+  proxies:
+  - 🇰🇷[KR]韩国-Seoul
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: SG
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png
+  proxies:
+  - 🇸🇬[SG]Singapore01
+  - 🇸🇬[SG]Singapore02
+  - 🇸🇬[SG]Singapore03
+  - 🇸🇬[SG]Singapore04
+  - 🇸🇬[SG]Singapore05
+  - 🇸🇬[SG]Singapore06
+  - 🇸🇬[SG]Singapore07
+  - 🇸🇬[SG]Singapore08
+  - 🇸🇬[SG]Singapore09
+  - 🇸🇬[SG]Singapore10
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: TW
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png
+  proxies:
+  - 🇹🇼[TW]TaiPei01-GPT优化
+  - 🇹🇼[TW]TaiPei02-GPT优化
+  - 🇹🇼[TW]TaiPei03-GPT优化
+  - 🇹🇼[TW]TaiPei04-GPT优化
+  - 🇹🇼[TW]TaiPei05-GPT优化
+  - 🇹🇼[TW]TaiPei06-GPT优化
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: GB
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_Kingdom.png
+  proxies:
+  - 🇬🇧[UK]英国Coventry01-BBC优化
+  - 🇬🇧[UK]英国Coventry02-BBC优化
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: DE
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Germany.png
+  proxies:
+  - 🇩🇪[DE]德国-Frankfurt01
+  - 🇩🇪[DE]德国-Frankfurt02
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: TK
+  type: url-test
+  tolerance: 50
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Turkey.png
+  proxies:
+  - 🇹🇷[TR]土耳其-Istanbul
+- interval: 300
+  timeout: 3000
+  url: http://cp.cloudflare.com/generate_204
+  lazy: true
+  max-failed-times: 3
+  hidden: false
+  name: Others
+  type: select
+  proxies:
+  - 剩余流量：49.4 GB
+  - 距离下次重置剩余：14 天
+  - 套餐到期：2025-05-22
+  - 🇨🇳[CN]HK专线01-【5倍率】测试
+  - 🇨🇳[CN]HK专线02-【5倍率】测试
+  - 🇫🇷[FR]法国-Paris01
+  - 🇫🇷[FR]法国-Paris02
+  - 🇨🇦[CA]加拿大-Toronto
+  - 🇳🇱[NL]荷兰-Amsterdam
+  - 🇷🇺[RU]俄罗斯-Moscow
+  - 🇮🇳[IN]印度-bangalore
+  - 🇻🇳[VN]越南-HoChiMinh
+  - 🇦🇺[AU]澳大利亚-Sydney
+  - 🇳🇬[NG]尼日利亚-Lagos
+  - 🇦🇷[AR]阿根廷-BuenosAires
+  - 🇲🇰[MK]马其顿-Macedonia
+  - '[境外用户专用]GPT01'
+  icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/World_Map.png
+rule-providers:
+  applications:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: https://fastly.jsdelivr.net/gh/DustinWin/ruleset_geodata@clash-ruleset/applications.list
+    path: ./ruleset/DustinWin/applications.list
+  ai:
+    type: http
+    format: text
+    interval: 86400
+    behavior: classical
+    url: https://github.com/dahaha-365/YaNet/raw/refs/heads/dist/rulesets/mihomo/ai.list
+    path: ./ruleset/YaNet/ai.list
+  category-bank-jp:
+    type: http
+    format: mrs
+    interval: 86400
+    behavior: domain
+    url: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-bank-jp.mrs
+    path: ./ruleset/MetaCubeX/category-bank-jp.mrs
+rules:
+- RULE-SET,applications,Download
+- PROCESS-NAME,SunloginClient,DIRECT
+- PROCESS-NAME,SunloginClient.exe,DIRECT
+- DOMAIN-SUFFIX,grazie.ai,Overseas AI
+- DOMAIN-SUFFIX,grazie.aws.intellij.net,Overseas AI
+- RULE-SET,ai,Overseas AI
+- GEOSITE,youtube,YouTube
+- GEOSITE,biliintl,Bilibili SEA
+- GEOSITE,bahamut,Bahamut
+- GEOSITE,disney,Disney+
+- GEOSITE,netflix,NETFLIX
+- GEOSITE,tiktok,Tiktok
+- GEOSITE,spotify,Spotify
+- GEOSITE,hbo,HBO
+- GEOSITE,tvb,TVB
+- GEOSITE,primevideo,Prime Video
+- GEOSITE,hulu,Hulu
+- GEOIP,telegram,Telegram
+- GEOSITE,whatsapp,WhatsApp
+- GEOSITE,line,Line
+- GEOSITE,category-games@cn,China
+- GEOSITE,category-games,Gaming
+- GEOSITE,tracker,Tracking
+- GEOSITE,category-ads-all,Ad-Block
+- GEOSITE,apple-cn,Apple
+- GEOSITE,google,Google
+- GEOSITE,microsoft@cn,China
+- GEOSITE,microsoft,Microsoft
+- RULE-SET,category-bank-jp,Japan
+- GEOIP,jp,Japan,no-resolve
+- GEOSITE,private,DIRECT
+- GEOIP,private,DIRECT,no-resolve
+- GEOSITE,cn,China
+- GEOIP,cn,China,no-resolve
+- MATCH,Others (Global)
