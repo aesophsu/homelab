@@ -1,6 +1,6 @@
 # load all dae files placed in ./config.d/
-include {
-    config.d/*.dae
+# include {
+#     config.d/*.dae
 
 global {
     ##### Software options.
@@ -213,7 +213,7 @@ dns {
 group {
     default {
         # No filter. Use all nodes.
-        filter: !(name(keyword: '倍率') || name(keyword: '境外') || name(keyword: '到期') || name(keyword: '剩余'))
+        filter: !name(keyword: '剩余')
 
         # Randomly select a node from the group for every connection.
         #policy: random
@@ -230,7 +230,7 @@ group {
 
     Overseas {
         # No filter. Use all nodes.
-        filter: !(name(keyword: '香港') || name(keyword: '倍率') || name(keyword: '境外') || name(keyword: '到期') || name(keyword: '剩余'))
+        filter: !name(keyword: '香港')
 
         # Randomly select a node from the group for every connection.
         #policy: random
@@ -265,7 +265,7 @@ group {
 
     steam {
         # Filter nodes from the global node pool defined by the subscription and node section above.
-        filter: !(name(keyword: '倍率') || name(keyword: '境外') || name(keyword: '到期') || name(keyword: '剩余'))
+        filter: !name(keyword: '倍率')
         # Select the node with min moving average of latencies from the group for every connection.
         policy: min_moving_avg
 
