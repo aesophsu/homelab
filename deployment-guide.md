@@ -25,7 +25,7 @@ macOS High Sierra 终极部署指南 **优化顺序、国内源加速、手动�
 * [MacPorts 2.11.5 PKG](https://github.com/macports/macports-base/releases/download/v2.11.5/MacPorts-2.11.5-10.13-HighSierra.pkg)
 * [Miniforge3 x86_64](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-x86_64.sh)
 * [Postgres.app 2.7.10 DMG](https://github.com/PostgresApp/PostgresApp/releases/download/v2.7.10/Postgres-2.7.10-12-13-14-15-16-17.dmg)
-* [Mihomo go120 v3] (https://github.com/MetaCubeX/mihomo/releases/download/v1.19.15/mihomo-darwin-amd64-v3-go120-v1.19.15.gz)
+* [Mihomo go120 v3](https://github.com/MetaCubeX/mihomo/releases/download/v1.19.15/mihomo-darwin-amd64-v3-go120-v1.19.15.gz) 
 
 ---
 
