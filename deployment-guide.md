@@ -120,12 +120,6 @@ tar czf ~/mihomo-backup-$(date +%Y%m%d).tar.gz ~/.config/mihomo /Library/LaunchD
 
 ---
 
-明白，下面是 **Part 2/4**，重点放在 **系统基础 + TLS 修复 + MacPorts + Miniforge 配置（国内源）**，保证 High Sierra 下稳定和快速下载：
-
----
-
-# 🚀 macOS High Sierra 终极部署指南（2025-10-29） - Part 2/4
-
 ## 🔧 阶段1: 系统基础 + TLS 修复（约20min）
 
 ### 🧰 Step 1.1: Xcode Command Line Tools（编译基石）
@@ -297,9 +291,7 @@ source ~/.bash_profile
 | `ll`              | 彩色显示   |
 
 ---
-明白，下面是 **Part 3/4**，重点放在 **Postgres.app 安装 + 完整 bash_profile + Emacs IDE 配置（国内 ELPA/MELPA）**，保证 High Sierra 下科研开发环境完整：
 
----
 
 ### 🧰 Step 3.1: Postgres.app 安装（手动下载）
 
@@ -483,9 +475,6 @@ mkdir -p ~/.emacs.d/lisp
 ```bash
 tar czf ~/emacs-backup.tar.gz ~/.emacs.d/
 ```
-
----
-明白，下面是 **Part 4/4**，重点放在 **MIMIC-IV 自动化导入、Conda 环境配置，以及全栈一键验证和备份**，完成整个 High Sierra 科研开发环境部署：
 
 ---
 
