@@ -11,8 +11,6 @@
 | **5️⃣** | **验证+备份脚本** | 10min | **一键Checklist+tar** |
 
 **Tips**：
-- **替换`sue`**为你的用户名
-- **50GB空间** | **代理下载20GB MIMIC**
 - **每步表格验证** | **备份先行**
 - **下载**：[MacPorts](https://github.com/macports/macports-base/releases/download/v2.11.5/MacPorts-2.11.5-10.13-HighSierra.pkg) | [Miniforge](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-x86_64.sh) | [Postgres](https://github.com/PostgresApp/PostgresApp/releases/download/v2.7.10/Postgres-2.7.10-12-13-14-15-16-17.dmg)
 
