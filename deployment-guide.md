@@ -1,4 +1,4 @@
-# 🚀 **macOS High Sierra 终极部署指南（2025-10-29） - Part 1/3**
+# 🚀 **macOS High Sierra 终极部署指南（2025-10-29）**
 
 ## **📋 快速总览（总时长：2-4小时）**
 | **阶段** | **内容** | **时间** | **关键优化** |
@@ -91,13 +91,6 @@ chmod +x /usr/local/bin/mihomo-logrotate.sh
 ```bash
 tar czf ~/mihomo-backup-$(date +%Y%m%d).tar.gz ~/.config/mihomo /Library/LaunchDaemons/com.mihomo.service.plist
 ```
-
-**🎉 代理就位！** → **回复“next”获Part 2/3（系统+Shell）**
-# 🚀 **macOS High Sierra 终极部署指南（2025-10-29） - Part 2/3**
-
-**续 Part 1**：代理**飞起** → **系统/TLS/Python/PG 全修复**！
-
----
 
 ## **🔧 阶段1: 系统基础 + TLS 修复（**20min**）**
 
@@ -257,12 +250,6 @@ source ~/.bash_profile  # 生效!
 | `mamba --version` | `24.x` |
 | `ll` | 彩色ls |
 
-**🎉 基础**✅**！** → **回复“next”获**Part 3/3**（**Emacs + MIMIC + 一键验证**）** 🚀
-# 🚀 **macOS High Sierra 终极部署指南（2025-10-29） - **Part 3/3** 🚀**
-
-**续 Part 2**：Shell就位 → **Emacs IDE + MIMIC-IV全导入 + 一键验证**！
-
----
 
 ## **💻 阶段3: Emacs IDE（**精简3文件**，**零坑模块化**）** **(15min)**
 
@@ -459,4 +446,3 @@ chmod +x ~/verify_env.sh && ~/verify_env.sh
 ## **🚀 完结！** **High Sierra → 科研神机** 💻🏥  
 **日常**：`source ~/.bash_profile` | `~/verify_env.sh` | **Enjoy MIMIC+Emacs!**  
 
-**问题日志** → **秒修**！ 🔥
