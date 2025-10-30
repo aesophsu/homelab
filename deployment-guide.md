@@ -598,7 +598,7 @@ psql mimic -c "SELECT COUNT(*) FROM patients.hosp;"
 conda create -n mimic python=3.12 -y
 conda activate mimic
 mamba install jupyter pandas numpy matplotlib psycopg2 jupyterlab -y
-python3 -c "import psycopg2; print('✅ DB连通!')"
+python3 -c "import psycopg2; print('DB连通\!')"
 ```
 
 ---
