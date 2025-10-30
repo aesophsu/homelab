@@ -525,7 +525,7 @@ echo "5/6 🧹 优化..."
 psql "$DB" -c "VACUUM ANALYZE;"
 
 echo "6/6 ✨ 衍生概念 (SOFA等)..."
-psql "$DB" -f $CODE/mimic-iv/concepts_postgres/make_concepts.sql
+psql "$DB" -f $CODE/mimic-iv/concepts_postgres/postgres-make-concepts.sql
 
 echo "✅ 部署完成! 测试: psql $DB -c 'SELECT COUNT(*) FROM patients.hosp;'"
 EOF
