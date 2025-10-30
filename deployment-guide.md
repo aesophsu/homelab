@@ -497,40 +497,89 @@ git clone https://github.com/MIT-LCP/mimic-code
 ---
 
 ### 🧰 Step 4.2: 一键导入脚本
+非常好 ✅
+下面是根据你选择的 **安全路径方案（先切换到正确目录再导入）** 完全修订的版本。
+此脚本兼容 **macOS High Sierra + PostgreSQL 14+ + MIMIC-IV v3.1 + 本地路径结构**，
+确保 **所有 SQL 均能正确找到（避免相对路径错误）**，同时保持原有执行逻辑和美观输出。
+
+---
+
+## 🧰 Step 4.2: 一键导入脚本（安全路径版）
 
 ```bash
 cat > ~/deploy_mimic.sh << 'EOF'
 #!/bin/bash
 set -e
-DB="mimic"
-CODE=~/Documents/PhysioNet/mimic-code
-DATA=~/Documents/PhysioNet/mimic-iv-3.1
 
-echo "🚀 MIMIC-IV 部署开始..."
+# ===============================
+# 🚀 MIMIC-IV 部署自动化脚本（安全路径方案）
+# macOS High Sierra 兼容版
+# ===============================
+
+DB="mimic"
+CODE="/Users/sue/Documents/PhysioNet/mimic-code"
+DATA="/Users/sue/Documents/PhysioNet/mimic-iv-3.1"
+
+echo "🚀 MIMIC-IV 数据库部署开始..."
+echo "========================================="
+
+# -------------------------------------------
+# Step 1️⃣ 创建数据库（若已存在则跳过）
+# -------------------------------------------
 psql -c "CREATE DATABASE $DB;" 2>/dev/null || true
 
-echo "1/6 📋 表结构..."
-psql "$DB" -f $CODE/mimic-iv/buildmimic/postgres/create.sql
+# -------------------------------------------
+# Step 2️⃣ 导入基础表结构
+# -------------------------------------------
+echo "1/6 📋 创建表结构..."
+psql "$DB" -f "$CODE/mimic-iv/buildmimic/postgres/create.sql"
 
+# -------------------------------------------
+# Step 3️⃣ 导入数据（可能耗时 1~3 小时）
+# -------------------------------------------
 echo "2/6 ⏳ 导入数据 (~1-3h)..."
-psql "$DB" -v mimic_data_dir="$DATA" -f $CODE/mimic-iv/buildmimic/postgres/load_gz.sql
+psql "$DB" -v mimic_data_dir="$DATA" -f "$CODE/mimic-iv/buildmimic/postgres/load_gz.sql"
 
-echo "3/6 🔗 约束..."
-psql "$DB" -f $CODE/mimic-iv/buildmimic/postgres/constraint.sql
+# -------------------------------------------
+# Step 4️⃣ 添加约束（外键、主键等）
+# -------------------------------------------
+echo "3/6 🔗 添加约束..."
+psql "$DB" -f "$CODE/mimic-iv/buildmimic/postgres/constraint.sql"
 
-echo "4/6 📈 索引..."
-psql "$DB" -f $CODE/mimic-iv/buildmimic/postgres/index.sql
+# -------------------------------------------
+# Step 5️⃣ 创建索引，加快查询速度
+# -------------------------------------------
+echo "4/6 📈 创建索引..."
+psql "$DB" -f "$CODE/mimic-iv/buildmimic/postgres/index.sql"
 
-echo "5/6 🧹 优化..."
+# -------------------------------------------
+# Step 6️⃣ 数据库优化（VACUUM + ANALYZE）
+# -------------------------------------------
+echo "5/6 🧹 执行数据库优化..."
 psql "$DB" -c "VACUUM ANALYZE;"
 
-echo "6/6 ✨ 衍生概念 (SOFA等)..."
-psql "$DB" -f $CODE/mimic-iv/concepts_postgres/postgres-make-concepts.sql
+# -------------------------------------------
+# Step 7️⃣ 导入衍生概念（SOFA、SAPS II 等）
+# 已采用安全路径方案：先进入目录再执行
+# -------------------------------------------
+echo "6/6 ✨ 导入衍生概念表 (SOFA / SAPS II / Charlson 等)..."
+cd "$CODE/mimic-iv/concepts_postgres"
+psql "$DB" -f postgres-make-concepts.sql
 
-echo "✅ 部署完成! 测试: psql $DB -c 'SELECT COUNT(*) FROM patients.hosp;'"
+# -------------------------------------------
+# ✅ 完成提示
+# -------------------------------------------
+echo "========================================="
+echo "✅ MIMIC-IV 部署完成!"
+echo "👉 测试命令: psql $DB -c 'SELECT COUNT(*) FROM mimiciv_hosp.patients;'"
+echo "📂 数据路径: $DATA"
+echo "📘 SQL代码路径: $CODE"
 EOF
 
+# 授权执行
 chmod +x ~/deploy_mimic.sh
+
+# 执行部署脚本
 ~/deploy_mimic.sh
 ```
 
