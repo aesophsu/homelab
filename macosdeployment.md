@@ -268,8 +268,6 @@ unset __mamba_setup
 # ===== 别名 & PS1 =====
 alias ll='ls -lhG'
 alias py='python3'
-alias jn='jupyter notebook'
-alias jc='jupyter lab'
 export PS1="\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ "
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
@@ -360,8 +358,6 @@ fi
 # ===== 别名 & PS1 =====
 alias ll='ls -lhG'
 alias py='python3'
-alias jn='jupyter notebook'
-alias jc='jupyter lab'
 alias mimic='psql mimic'
 export PS1="\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ "
 
@@ -597,7 +593,7 @@ psql mimic -c "SELECT COUNT(*) FROM patients.hosp;"
 ```bash
 conda create -n mimic python=3.12 -y
 conda activate mimic
-mamba install jupyter pandas numpy matplotlib psycopg2 jupyterlab -y
+mamba install pandas numpy matplotlib psycopg2 -y
 python3 -c "import psycopg2; print('DB连通\!')"
 ```
 
@@ -646,7 +642,6 @@ chmod +x ~/verify_env.sh
 | Python/Conda | `conda activate mimic` → pandas/psycopg2                                  |
 | Emacs        | `emacs` → C-c c 激活环境，C-c q 连 SQL                                          |
 | MIMIC        | `psql mimic -c "SELECT * FROM mimic_derived.icu.stay_first_24h LIMIT 5;"` |
-| Jupyter      | `jc` → `%load_ext sql` + `%%sql postgresql://mimic`                       |
 
 ---
 
