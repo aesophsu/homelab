@@ -1,0 +1,228 @@
+# =========================
+# /etc/mihomo/config.yaml
+# N1 Single-Arm Router Optimized
+# =========================
+
+port: 7890
+socks-port: 7891
+mixed-port: 7893
+allow-lan: true
+log-level: info
+ipv6: true
+external-controller: 0.0.0.0:9090
+external-ui: /etc/mihomo/ui
+
+# Good for browser privacy
+global-client-fingerprint: chrome
+keep-alive-interval: 15
+
+# Strict is okay, but 'always' is sometimes more stable on N1 Linux builds
+find-process-mode: strict
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+# TProxy is the correct method for N1 Router mode
+tproxy:
+  enable: true
+  listen: 0.0.0.0:7895
+  mark: 1
+  route-table: 100 
+
+# Sniffer: Helps identify traffic correctly (e.g. Netflix apps)
+sniffer:
+  enable: true
+  parse-pure-ip: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+      override-destination: true
+    QUIC:
+      ports: [443, 8443]
+      override-destination: true
+
+dns:
+  enable: true
+  listen: 0.0.0.0:7853
+  ipv6: true
+  prefer-h3: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-range-ipv6: fd00:100::/64
+  respect-rules: true
+
+  # Mapping specific domains to specific DNS servers to prevent loops
+  nameserver-policy:
+    "dns.google": "223.5.5.5"
+    "dns11.quad9.net": "223.5.5.5"
+    "geosite:cn": [223.5.5.5, 119.29.29.29]
+
+  # Default nameservers (for bootstrapping)
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 2400:3200::1
+
+  # Upstream DNS (Encrypted) - Used for non-CN domains
+  nameserver:
+    - https://dns.google/dns-query
+    - https://dns11.quad9.net/dns-query
+
+  # Domestic DNS - Used for CN domains (via nameserver-policy/rules)
+  direct-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 2400:3200::1
+
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+    - "+.home"
+    - "+.internal"
+    - "router.asus.com"
+    - "routerlogin.net"
+    - "myrouter.local"
+    - "+.miwifi.com"
+    - "+.mijia.com"
+    - "time.apple.com"
+    - "captive.apple.com"
+    - "rule-set:private"
+    - "rule-set:cn"
+
+geox:
+  geoip:
+    path: /etc/mihomo/Country.mmdb
+    url: https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb
+    asn-path: /etc/mihomo/GeoLite2-ASN.mmdb
+    asn-url: https://github.com/DustinWin/geoip_asn/releases/latest/download/GeoLite2-ASN.mmdb
+  geosite:
+    path: /etc/mihomo/geosite.dat
+    url: https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+  update-interval: 172800
+
+proxy-providers:
+  Airport1:
+    type: http
+    # REDACTED - PUT YOUR TOKEN BACK HERE
+    url: "https://999.ts1110.top/weibo/ipx/client/dy?token=286deb68eb0f7714af083c7192349b12"
+    path: /etc/mihomo/proxies/airport1.yaml
+    interval: 43200
+    update-on-start: true
+    skip-cert-verify: false
+    filter: "(?i)(hk|港|tw|台|jp|日|sg|新|us|美)"
+    exclude-filter: "(?i)(倍|test|备用|Expire|到期)"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: 300
+      timeout: 5
+      lazy: true 
+    override:
+      additional-suffix: " - A1"
+
+  Airport2:
+    type: http
+    # REDACTED - PUT YOUR TOKEN BACK HERE
+    url: "https://fcsblka.fcsubcn.cc:2096/api/v1/client/subscribe?token=6a0563b8a30ac5e2d6310cf55cca705e"
+    path: /etc/mihomo/proxies/airport2.yaml
+    interval: 43200
+    update-on-start: true
+    skip-cert-verify: false
+    filter: "(?i)(hk|港|tw|台|jp|日|sg|新|us|美)"
+    exclude-filter: "(?i)(倍|test|备用|Expire|到期)"
+    health-check:
+      enable: true
+      url: https://cp.cloudflare.com/generate_204
+      interval: 300
+      timeout: 5
+      lazy: true
+    override:
+      additional-suffix: " - A2"
+
+proxy-groups:
+  - {name: Proxy, type: select, proxies: [Auto, AI, HK, TW, JP, SG, US, DIRECT, REJECT]} 
+  - {name: Auto, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 300, use: [Airport1, Airport2]}
+  - {name: AI, type: select, proxies: [TW, JP, SG, US]}
+  - {name: HK, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 300, use: [Airport1, Airport2], filter: "(?i)(hk|港)"}
+  - {name: TW, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 300, use: [Airport1, Airport2], filter: "(?i)(tw|台)"}
+  - {name: JP, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 300, use: [Airport1, Airport2], filter: "(?i)(jp|日)"}
+  - {name: SG, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 300, use: [Airport1, Airport2], filter: "(?i)(sg|新)"}
+  - {name: US, type: fallback, url: "https://cp.cloudflare.com/generate_204", interval: 300, use: [Airport1, Airport2], filter: "(?i)(us|美)"}
+   
+rule-providers:
+  fakeip-filter:
+    type: http
+    behavior: domain
+    format: mrs
+    path: /etc/mihomo/rules/fakeip-filter.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.mrs"
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    format: mrs
+    path: /etc/mihomo/rules/private.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs"
+    interval: 86400
+  ai:
+    type: http
+    behavior: domain
+    format: mrs
+    path: /etc/mihomo/rules/ai.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
+    interval: 86400
+  proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    path: /etc/mihomo/rules/proxy.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/proxy.mrs"
+    interval: 86400
+  cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: /etc/mihomo/rules/cn.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn.mrs"
+    interval: 86400
+  cnip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: /etc/mihomo/rules/cnip.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs"
+    interval: 86400
+
+rules:
+  # Special User Requirements
+  - DOMAIN-SUFFIX,ncbi.nlm.nih.gov,DIRECT
+  - DOMAIN-SUFFIX,pubmed.ncbi.nlm.nih.gov,DIRECT
+   
+  # Local / Private
+  - RULE-SET,private,DIRECT
+  - RULE-SET,fakeip-filter,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - DOMAIN-SUFFIX,home,DIRECT
+  - DOMAIN-SUFFIX,lan,DIRECT
+   
+  # Apple local services
+  - DOMAIN-KEYWORD,airdrop,DIRECT
+  - DOMAIN-KEYWORD,airplay,DIRECT
+  - DOMAIN-KEYWORD,bonjour,DIRECT
+   
+  # AI
+  - RULE-SET,ai,AI
+   
+  # China traffic
+  - RULE-SET,cn,DIRECT
+  - RULE-SET,cnip,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve 
+   
+  # Proxy
+  - RULE-SET,proxy,Proxy
+  - MATCH,Proxy
